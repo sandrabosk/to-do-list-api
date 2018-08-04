@@ -35,9 +35,21 @@ router.post('/tasks/create', (req, res, next)=>{
 
 /// edit task route here
 
+router.post('/tasks/edit/;id', (req,res,next) => {
+    Task.findByIdAndUpdate(req.params.id,req.body)
+    .then( response => response.json() )
+    .catch( err => res.json(err) )
+});
+
 
 
 // delete task route
+
+router.post('tasks/delete/:id', ( req, res, next ) => {
+    Task.findByIdAndRemove(req.params.id)
+    .then( response => response.json() )
+    .catch( err => res.json(err) )
+});
 
 
 
