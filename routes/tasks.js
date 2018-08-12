@@ -14,10 +14,16 @@ router.get('/tasks', (req, res, next) => {
 });
 
 router.post('/tasks/create', (req, res, next)=>{
+    console.log(req.body, req.user)
+    if(!req.user){
+        return res.json({message: 'Sorry! You must login to create task.'});
+        
+    }
     Task.create({
         title: req.body.title,
         description: req.body.description,
-        doneyet: req.body.doneyet
+        doneyet: req.body.doneyet,
+        owner: req.user._id
     })
     .then((response)=>{
         res.json(response)

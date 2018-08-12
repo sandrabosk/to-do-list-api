@@ -55,7 +55,6 @@ authRoutes.post('/signup', (req, res, next) => {
 });
 
 
-
 authRoutes.post('/login', (req, res, next) => {
     passport.authenticate('local', (err, theUser, failureDetails) => {
         if (err) {
@@ -79,7 +78,6 @@ authRoutes.post('/login', (req, res, next) => {
         });
     })(req, res, next);
 });
-
 
 
 authRoutes.post('/logout', (req, res, next) => {
